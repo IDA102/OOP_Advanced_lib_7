@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="H.h" />
     <ClInclude Include="MyStack.h" />
+    <ClInclude Include="MyStack2.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="SWAP.h" />
   </ItemGroup>

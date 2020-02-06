@@ -9,7 +9,10 @@
 #include <fstream>
 #include <iostream>
 #include <Windows.h>
+#include <string>
+#include <stdexcept>
 using namespace std;
 #include "SWAP.h"
 #include "MyString.h"
 #include "MyStack.h"
+#include "MyStack2.h"
