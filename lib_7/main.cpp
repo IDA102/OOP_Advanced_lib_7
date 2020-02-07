@@ -20,7 +20,6 @@ ostream& operator<<(ostream &os, const MyStack2_List<int> &ms)//Спросить почему 
 	return os;
 }
 
-
 int _tmain(int argc, _TCHAR* argv[])
 {
 	setlocale(LC_ALL, "Russian");
