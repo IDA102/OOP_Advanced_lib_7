@@ -27,6 +27,7 @@ template <typename T> class MyStack2_List
 			prom->pNext = this;
 			this->m_Data = new T(*ps);// Не забыть скопировать нормально
 		};
+		friend ostream& operator<<(ostream &os, const MyStack2_List &ms);
 	};
 	size_t m_size = 0;
 	Node Head;
@@ -52,5 +53,21 @@ public:
 		m_size--;
 		return (*prom2);
 	};
-	operator [];
+	T& operator [] (int i)
+	{
+		if ((i > -1) & (i < m_size))
+		{
+			Node *prom = Head.pNext;
+			for (int q = 0 ; q < m_size ; q++)
+			{
+				if (q == i)
+				{
+					return (*prom->m_Data);
+				}
+				else prom = prom->pNext;
+			}
+		}
+		else { cout << "Ты не пройдёшь!!!" << endl; }
+	};
+	friend ostream& operator<<(ostream &os, const MyStack2_List &ms);
 };

@@ -8,12 +8,18 @@
 //#include <stdexcept>
 
 //Глобальные функции
-ostream& operator<<(ostream& os, const MyString& s)
+ostream& operator<<(ostream &os, const MyStack2_List<int> &ms)//Спросить почему для шаблоны нужно указать тип 
 {
-	//	os<<"contents:  "<<s.m_pStr;
-	os << s.m_pStr;
+	const MyStack2_List<int>::Node *p = &ms.Head;
+	p = p->pNext;
+	for (size_t i = 0; i < ms.m_size; i++)
+	{
+		os << *(p->m_Data) << endl;
+		p = p->pNext;
+	}
 	return os;
 }
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -87,19 +93,34 @@ int _tmain(int argc, _TCHAR* argv[])
 		//пользователь
 		MyStack2_List<int>	q;
 		stop
-		for (int i = 0 ; i < 5 ; i++)
+		for (int i = 0 ; i < 5 ; i++)//PUSH
 		{
 			int w = i + 1;
 			q.push(w);
 		}
 		stop
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 5; i++)//POP
 		{
-		int u = q.pop();
+			int u = q.pop();
 		}
 		stop
-
-
-
+		//Оператор []
+		for (int i = 0; i < 3; i++)//PUSH
+		{
+			int w = i + 10;
+			q.push(w);
+		}
+		int w = q[0];
+		stop
+		w = q[1];
+		stop
+		w = q[3];
+		stop
+		w = q[3];
+		stop
+		//Вывод в поток
+		cout << "-------------------------------------------------------------" << endl;
+		cout << q << endl;
+		stop
 	return 0;
 }
