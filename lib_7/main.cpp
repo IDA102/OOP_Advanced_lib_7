@@ -6,7 +6,13 @@
 	//		шаблоны классов,
 
 //#include <stdexcept>
-
+void SWAP(MyString &r_S_a, MyString &r_S_b)
+{
+	MyString *c = &r_S_a;
+	r_S_a = r_S_b;
+	r_S_b = *c;
+	c = 0;
+};
 //Глобальные функции
 ostream& operator<<(ostream &os, const MyStack2_List<int> &ms)//Спросить почему для шаблоны нужно указать тип 
 {
