@@ -59,5 +59,5 @@ public:
 
 	//специализация шаблона для  типа MyString
 	//template <> friend void Swap(MyString& a, MyString& b);
-//friend void SWAP(MyString& a, MyString& b);
+	friend void SWAP(MyString &a, MyString &b);
 };

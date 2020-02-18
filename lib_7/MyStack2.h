@@ -19,15 +19,13 @@ template <typename T> class MyStack2_List
 		};
 		Node(Node *p, const T *ps, const size_t m_size)
 		{
-			Node *prom = p;
-			for (size_t i = 0; i < m_size; i++)
-			{
-				prom = prom->pNext;
-			}
-			prom->pNext = this;
-			this->m_Data = new T(*ps);// Не забыть скопировать нормально
+			Node *prom = p->pNext;
+			p->pNext = this;
+			this->m_Data = new T(*ps);
+			this->pNext = prom;
+			prom = 0;
 		};
-		friend ostream& operator<<(ostream &os, const MyStack2_List &ms);
+		friend ostream& operator<< <T>(ostream &os, const MyStack2_List &ms);
 	};
 	size_t m_size = 0;
 	Node Head;
@@ -42,20 +40,24 @@ public:
 		new Node(&Head, &r_data, m_size);
 		m_size++;
 	};
-	T& pop()
-	{
+	T* pop()
+	{		//Указал Head следующего за мной(на 2 элемент)
 		Node *prom = Head.pNext;
-		stop
 		Head.pNext = (*prom).pNext;
-		T *prom2 = (*prom).m_Data;
+		
+		T *prom2 = (*prom).m_Data;//Изымаю объект из Node'a
 		(*prom).m_Data = 0;
-		(*prom).~Node();
+
+		delete prom;//Удаляю Node 
 		m_size--;
-		return (*prom2);
+
+		//Замечание что мы не передаём указатель, мы передаём объект. НО это накладно!
+		return prom2;//Возвращаю указатель на объект, Что бы пользователь пользовался им сам!!!
+		//И удалял его тоже сам.  Это же Стек!!! И это же POP!!!
 	};
 	T& operator [] (int i)
 	{
-		if ((i > -1) & (i < m_size))
+		if ((i > -1) && (i < m_size))
 		{
 			Node *prom = Head.pNext;
 			for (int q = 0 ; q < m_size ; q++)
@@ -69,5 +71,14 @@ public:
 		}
 		else { cout << "Ты не пройдёшь!!!" << endl; }
 	};
-	friend ostream& operator<<(ostream &os, const MyStack2_List &ms);
+	~MyStack2_List()
+	{
+		for (size_t i = 0 ; i < m_size ; i++)
+		{
+			Node *prom = Head.pNext;
+			Head.pNext = prom->pNext;
+			delete prom;
+		}
+	}
+	friend ostream& operator<< <T> (ostream &os, const MyStack2_List &ms);
 };

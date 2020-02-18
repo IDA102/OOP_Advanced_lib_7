@@ -23,13 +23,12 @@ public:
 			throw "Out of range";
 		}
 	}
-	int pop()
+	T pop()
 	{
 		if (cnt > -1)
 		{
-			cout << m_ar[cnt - 1] << endl;
-			m_ar[cnt - 1] = 0;
 			cnt--;
+			return m_ar[cnt];
 		}
 		else
 		{
