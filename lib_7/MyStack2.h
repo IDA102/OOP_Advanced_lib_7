@@ -25,7 +25,7 @@ template <typename T> class MyStack2_List
 			this->pNext = prom;
 			prom = 0;
 		};
-		friend ostream& operator<< <T>(ostream &os, const MyStack2_List &ms);
+		friend ostream& operator<< <T>(ostream &os,MyStack2_List &ms);
 	};
 	size_t m_size = 0;
 	Node Head;
@@ -80,5 +80,5 @@ public:
 			delete prom;
 		}
 	}
-	friend ostream& operator<< <T> (ostream &os, const MyStack2_List &ms);
+	friend ostream& operator<< <T> (ostream &os,MyStack2_List &ms);
 };
